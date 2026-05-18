@@ -12,6 +12,7 @@ Prevents farmland from being trampled by players, mobs, and projectiles.
 '''
 authors="Kestalkayden"
 displayURL="https://github.com/kestalkayden/no-crop-trample-lite"
+logoFile="assets/nocroptramplelite/icon.png"
 
 [[dependencies.nocroptramplelite]]
 modId="neoforge"

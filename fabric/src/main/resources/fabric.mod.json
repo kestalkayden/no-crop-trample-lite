@@ -12,6 +12,7 @@
     "sources": "https://github.com/kestalkayden/no-crop-trample-lite"
   },
   "license": "CC0-1.0",
+  "icon": "assets/nocroptramplelite/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
