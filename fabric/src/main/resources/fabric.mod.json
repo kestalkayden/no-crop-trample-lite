@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "nocroptramplelite",
+  "version": "${version}",
+  "name": "No Crop Trample",
+  "description": "Prevents farmland from being trampled by players, mobs, and projectiles.",
+  "authors": [
+    "Kestalkayden"
+  ],
+  "contact": {
+    "homepage": "https://github.com/kestalkayden/no-crop-trample-lite",
+    "sources": "https://github.com/kestalkayden/no-crop-trample-lite"
+  },
+  "license": "CC0-1.0",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.kestalkayden.nocroptramplelite.NoCropTrampleFabric"
+    ]
+  },
+  "mixins": [
+    "nocroptramplelite.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.18.4",
+    "fabric-api": "*",
+    "minecraft": ">=26.1 <26.2",
+    "java": ">=25"
+  }
+}
