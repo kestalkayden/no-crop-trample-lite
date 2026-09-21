@@ -13,26 +13,31 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.FarmlandBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
-/** Wraps the static turnToDirt(...) invocation inside FarmlandBlock.fallOn so
+/** Wraps the turnToBaseBlock(...) invocation inside FarmlandBlock.fallOn so
  *  we can skip it without disrupting the surrounding fall-damage path (the
  *  super.fallOn call still runs). MixinExtras' @WrapOperation is bundled with
- *  Fabric Loader so this needs no extra runtime dep. */
+ *  Fabric Loader so this needs no extra runtime dep.
+ *
+ *  <p>26.3 generalised farmland over a {@code baseBlock}: the static
+ *  {@code turnToDirt(Entity, BlockState, Level, BlockPos)} became the instance
+ *  method {@code turnToBaseBlock(...)} with the same parameters, so the wrapped
+ *  call is now virtual and the handler receives the block instance first. */
 @Mixin(FarmlandBlock.class)
 public abstract class FarmlandBlockMixin {
 
     @WrapOperation(
         method = "fallOn",
         at = @At(value = "INVOKE",
-            target = "Lnet/minecraft/world/level/block/FarmlandBlock;turnToDirt(" +
+            target = "Lnet/minecraft/world/level/block/FarmlandBlock;turnToBaseBlock(" +
                      "Lnet/minecraft/world/entity/Entity;" +
                      "Lnet/minecraft/world/level/block/state/BlockState;" +
                      "Lnet/minecraft/world/level/Level;" +
                      "Lnet/minecraft/core/BlockPos;)V"))
-    private void nocroptramplelite$skipTurnToDirt(
-            Entity entity, BlockState state, Level level, BlockPos pos,
+    private void nocroptramplelite$skipTurnToBaseBlock(
+            FarmlandBlock self, Entity entity, BlockState state, Level level, BlockPos pos,
             Operation<Void> original) {
         if (!ModConfig.get().shouldPrevent(entity)) {
-            original.call(entity, state, level, pos);
+            original.call(self, entity, state, level, pos);
         }
     }
 }

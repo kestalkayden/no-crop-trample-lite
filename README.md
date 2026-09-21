@@ -2,13 +2,13 @@
 
 Prevents farmland from reverting to dirt when entities land on it. No more destroyed wheat fields from a careless jump or a wandering zombie.
 
-Targets Minecraft 26.1.x on Fabric and NeoForge.
+Targets Minecraft 26.3 on Fabric and NeoForge.
 
 ## Requirements
 
-- Minecraft **26.1.x**
+- Minecraft **26.3**
 - Java **25**
-- Fabric Loader **0.18.4+** with **Fabric API**, *or* NeoForge **26.1+**
+- Fabric Loader **0.19.5+** with **Fabric API**, *or* NeoForge **26.3.0.7-beta+**
 
 ## Downloads
 
